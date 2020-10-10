@@ -15,20 +15,24 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
 
 import { LogInComponent } from './log-in/log-in.component';
-import { N10t04n2020Component } from './n10t04n2020/n10t04n2020.component';
 import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ItemChatComponent } from './home-page/list-item-chat/item-chat/item-chat.component';
+import { ListItemChatComponent } from './home-page/list-item-chat/list-item-chat.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    N10t04n2020Component,
+
     RegisterComponent,
-    HomePageComponent
+    HomePageComponent,
+    ItemChatComponent,
+    ListItemChatComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -46,7 +50,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     ReactiveFormsModule,
     MatButtonToggleModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

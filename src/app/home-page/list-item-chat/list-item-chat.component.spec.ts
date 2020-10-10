@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { N10t04n2020Component } from './n10t04n2020.component';
+import { ListItemChatComponent } from './list-item-chat.component';
 
-describe('N10t04n2020Component', () => {
-  let component: N10t04n2020Component;
-  let fixture: ComponentFixture<N10t04n2020Component>;
+describe('ListItemChatComponent', () => {
+  let component: ListItemChatComponent;
+  let fixture: ComponentFixture<ListItemChatComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ N10t04n2020Component ]
+      declarations: [ ListItemChatComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(N10t04n2020Component);
+    fixture = TestBed.createComponent(ListItemChatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

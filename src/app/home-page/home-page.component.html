@@ -5,9 +5,8 @@
       fxFill
       appearance="legacy"
       name="fontStyle"
-      aria-label="Font Style"
-    >
-      <mat-card>
+      aria-label="Font Style">
+      <mat-card class="avatar">
         <div mat-card-avatar class="image-info"></div>
       </mat-card>
       <mat-button-toggle value="chat">
@@ -22,9 +21,8 @@
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-  <div fxFlex="25 40 25" class="list-chat">
-    <!--  -->
 
+  <div fxFlex="25 1 25" class="list-chat">
     <div style="border-bottom: 1px solid #323233">
       <h3><span>Zalo - </span> <span>Ten user</span></h3>
       <mat-divider></mat-divider>
@@ -37,20 +35,10 @@
         </button>
       </div>
     </div>
-
-  <!--  -->
-
-    <div>     
-      <select  [(ngModel)]="selectedValue">
-        <option  value="1">Tất cả tin nhắn</option>
-        <option value="2">Tin nhắn chưa đọc</option>
-        <option value="3">Tin nhắn từ người lạ</option>
-      </select>
-      <p>{{selectedValue}}</p>
+    <div>
+      <app-list-item-chat></app-list-item-chat>
     </div>
-
-    <!--  -->
-    <div></div>
   </div>
-  <div fxFlex="70 60 70" class="content-chat">3</div>
+
+  <div fxFlex="70 3 70" class="content-chat">3</div>
 </div>

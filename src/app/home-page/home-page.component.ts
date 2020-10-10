@@ -10,6 +10,9 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectedValue = 1 ;
+
+
+  
+  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
 }

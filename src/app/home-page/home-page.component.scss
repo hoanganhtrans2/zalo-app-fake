@@ -36,7 +36,7 @@ mat-button-toggle {
 .mat-card:not([class*="mat-elevation-z"]) {
   box-shadow: none !important;
 }
-mat-card {
+.avatar {
   background-color: transparent;
   padding-top: 22px;
   padding-bottom: 22px;
@@ -56,3 +56,17 @@ select{
 select:hover{
     color: #0589ff;
 }
+
+.mat-list-single-selected-option, .mat-list-single-selected-option:hover, .mat-list-single-selected-option:focus {
+  background-color: #DCDCDC;}
+
+  .mat-list-item-content{
+    padding: 0;
+  }
+
+  .mat-list-item-content, .mat-list-item-content-reverse{
+    padding: 0 !important;
+  }
+  mat-list-option{
+    height: 65px !important;
+  }

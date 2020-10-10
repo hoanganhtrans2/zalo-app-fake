@@ -14,3 +14,8 @@ mat-ink-bar,  .mat-step-icon-state-edit {
 .mat-select-value{
     color: black;
 }
+ .mat-list-item-content, .mat-list-item-content-reverse{
+    padding: 0 !important;
+    height: 50px;
+  }
+  

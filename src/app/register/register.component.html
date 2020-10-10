@@ -1,0 +1,89 @@
+<div class="containerr" fxLayout="row" fxLayoutAlign="space-around center" fxFlexFill>
+    <mat-card fxFlexAlign="center">
+        <div fxLayout="column" fxLayoutAlign="space-around stretch">
+            <mat-card-title>Đăng Ký Tài Khoản</mat-card-title><br>
+            <mat-button-toggle-group fxLayout="row" appearance="legacy" name="fontStyle"
+                (change)="onValChange($event.value)">
+                <mat-button-toggle fxFlex="50" checked value="email">Email</mat-button-toggle>
+                <mat-button-toggle fxFlex="50" value="phone">Phone number</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        
+        <mat-horizontal-stepper linear #stepper>
+            <mat-step [stepControl]="idFormGroup">
+              <form [formGroup]="idFormGroup">
+                <ng-template matStepLabel>Bước 1</ng-template>
+                <mat-form-field fxLayout="column">
+                  <mat-label>{{registerbyemail ? "Email" : "Phone Nunber"}}</mat-label>
+                  <input matInput [placeholder]="registerbyemail ? 'Example@gmail.com' : 'XXX3598764' "
+                   formControlName="idFormControl" 
+                   [pattern]="registerbyemail ? rgxemail : rgxphone">
+                </mat-form-field>
+                <div fxLayout="column">
+                  <button  mat-raised-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- <mat-step [stepControl]="phoneIdFormGroup" *ngIf="!regiterbyemail">
+              <form [formGroup]="phoneIdFormGroup">
+                <ng-template matStepLabel>Bước 1</ng-template>
+                <mat-form-field fxLayout="column">
+                  <mat-label>Số điện thoại</mat-label>
+                  <input matInput placeholder="Số điện thoại" formControlName="phoneFormControl">
+                </mat-form-field>
+                <div fxLayout="column">
+                  <button  mat-raised-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step> -->
+            
+            <mat-step [stepControl]="regiterFormGroup" [optional]="isOptional" >
+              <form [formGroup]="regiterFormGroup">
+                <ng-template matStepLabel>Bước 2</ng-template>
+                <mat-form-field fxLayout="column">
+                  <mat-label>Tên người dùng</mat-label>
+                  <input matInput formControlName="userName" placeholder="Tên người dùng">
+                </mat-form-field>
+
+                <mat-form-field  fxLayout="column">
+                    <mat-label>Mật khẩu</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="passWord">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field  fxLayout="column">
+                    <mat-label>Nhập lại mật khẩu</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassWord">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field fxLayout="column">
+                    <mat-label>Mã xác thực</mat-label>
+                    <input matInput formControlName="verificationCode" placeholder="Mã xác thực">
+                </mat-form-field>
+               
+                <div fxLayout="row">
+                  <button fxFlex="50" mat-raised-button  matStepperPrevious>Back</button>
+                  <button fxFlex="50" mat-raised-button  matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Hoàn tất</ng-template>
+              <p style="text-align: center; margin-bottom: 20px;">Đăng ký hoàn tất</p>
+              <div fxLayout="column">
+                <button mat-raised-button  routerLink="/login" routerLinkActive="active">Đăng nhập</button>
+              </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-card>   
+  
+  
+
+</div>

@@ -13,8 +13,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { MatDividerModule } from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
 
 import { LogInComponent } from './log-in/log-in.component';
 import { N10t04n2020Component } from './n10t04n2020/n10t04n2020.component';
@@ -44,7 +44,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

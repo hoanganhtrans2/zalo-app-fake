@@ -1,1 +1,56 @@
-<p>home-page works!</p>
+<div fxLayout="row" fxLayoutAlign="space-between stretch" fxFill>
+  <div fxFlex="5 0 5" class="toolbar">
+    <mat-button-toggle-group
+      fxLayout="column"
+      fxFill
+      appearance="legacy"
+      name="fontStyle"
+      aria-label="Font Style"
+    >
+      <mat-card>
+        <div mat-card-avatar class="image-info"></div>
+      </mat-card>
+      <mat-button-toggle value="chat">
+        <mat-icon>message</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="list-contacts">
+        <mat-icon>contacts</mat-icon>
+      </mat-button-toggle>
+      <span class="spacer"></span>
+      <mat-button-toggle value="settings">
+        <mat-icon>settings</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div fxFlex="25 40 25" class="list-chat">
+    <!--  -->
+
+    <div style="border-bottom: 1px solid #323233">
+      <h3><span>Zalo - </span> <span>Ten user</span></h3>
+      <mat-divider></mat-divider>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-icon-button>
+          <mat-icon>person_add</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>add_comment</mat-icon>
+        </button>
+      </div>
+    </div>
+
+  <!--  -->
+
+    <div>     
+      <select  [(ngModel)]="selectedValue">
+        <option  value="1">Tất cả tin nhắn</option>
+        <option value="2">Tin nhắn chưa đọc</option>
+        <option value="3">Tin nhắn từ người lạ</option>
+      </select>
+      <p>{{selectedValue}}</p>
+    </div>
+
+    <!--  -->
+    <div></div>
+  </div>
+  <div fxFlex="70 60 70" class="content-chat">3</div>
+</div>

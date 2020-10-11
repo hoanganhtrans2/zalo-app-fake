@@ -22,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ItemChatComponent } from './home-page/list-item-chat/item-chat/item-chat.component';
 import { ListItemChatComponent } from './home-page/list-item-chat/list-item-chat.component';
+import { ListItemContactComponent } from './home-page/list-item-contact/list-item-contact.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ListItemChatComponent } from './home-page/list-item-chat/list-item-chat
     RegisterComponent,
     HomePageComponent,
     ItemChatComponent,
-    ListItemChatComponent
+    ListItemChatComponent,
+    ListItemContactComponent
   ],
   imports: [
     FlexLayoutModule,

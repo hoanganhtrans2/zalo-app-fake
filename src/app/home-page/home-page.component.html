@@ -9,11 +9,12 @@
       <mat-card class="avatar">
         <div mat-card-avatar class="image-info"></div>
       </mat-card>
-      <mat-button-toggle value="chat">
-        <mat-icon>message</mat-icon>
+    
+      <mat-button-toggle value="chat" (click)="goToChat()">
+        <mat-icon >message</mat-icon>
       </mat-button-toggle>
-      <mat-button-toggle value="list-contacts">
-        <mat-icon>contacts</mat-icon>
+      <mat-button-toggle value="list-contacts" (click)="goToContact()">
+        <mat-icon >contacts</mat-icon>
       </mat-button-toggle>
       <span class="spacer"></span>
       <mat-button-toggle value="settings">
@@ -35,8 +36,8 @@
         </button>
       </div>
     </div>
-    <div>
-      <app-list-item-chat></app-list-item-chat>
+    <div> 
+      <router-outlet></router-outlet>
     </div>
   </div>
 

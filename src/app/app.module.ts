@@ -16,6 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
@@ -23,6 +27,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ItemChatComponent } from './home-page/list-item-chat/item-chat/item-chat.component';
 import { ListItemChatComponent } from './home-page/list-item-chat/list-item-chat.component';
 import { ListItemContactComponent } from './home-page/list-item-contact/list-item-contact.component';
+import { AuthGuard } from './auth/auth.guard';
+import { DialogUpdateComponent } from './home-page/dialog-update/dialog-update.component';
+
+
 
 
 @NgModule({
@@ -34,9 +42,14 @@ import { ListItemContactComponent } from './home-page/list-item-contact/list-ite
     HomePageComponent,
     ItemChatComponent,
     ListItemChatComponent,
-    ListItemContactComponent
+    ListItemContactComponent,
+    DialogUpdateComponent
   ],
   imports: [
+    MatDatepickerModule,
+    HttpClientModule,
+    MatDialogModule,
+    MatMenuModule,
     FlexLayoutModule,
     BrowserModule,
     AppRoutingModule,
@@ -55,7 +68,7 @@ import { ListItemContactComponent } from './home-page/list-item-contact/list-ite
     MatSelectModule,
     MatListModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

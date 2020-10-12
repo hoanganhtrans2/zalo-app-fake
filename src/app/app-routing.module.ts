@@ -6,6 +6,7 @@ import { RegisterComponent } from '../app/register/register.component';
 import { HomePageComponent } from '../app/home-page/home-page.component';
 import { ListItemChatComponent } from '../app/home-page/list-item-chat/list-item-chat.component'
 import { ListItemContactComponent } from './home-page/list-item-contact/list-item-contact.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   { path: 'register', component: RegisterComponent },
   { 
-    path: 'dashboard', component: HomePageComponent,
+    path: 'dashboard', component: HomePageComponent, canActivate: [AuthGuard],
     children:[
       {path: '', redirectTo: 'chat', pathMatch: 'full'},
       { path: 'chat', component: ListItemChatComponent },

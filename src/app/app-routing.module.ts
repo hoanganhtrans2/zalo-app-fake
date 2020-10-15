@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   { path: 'register', component: RegisterComponent },
   { 
-    path: 'dashboard', component: HomePageComponent, canActivate: [AuthGuard],
+    path: 'dashboard', component: HomePageComponent, canActivateChild: [AuthGuard],
     children:[
       {path: '', redirectTo: 'chat', pathMatch: 'full'},
       { path: 'chat', component: ListItemChatComponent },

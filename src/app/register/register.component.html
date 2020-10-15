@@ -15,9 +15,9 @@
                 <ng-template matStepLabel>Bước 1</ng-template>
                 <mat-form-field fxLayout="column">
                   <mat-label>{{registerbyemail ? "Email" : "Phone Nunber"}}</mat-label>
-                  <input matInput [placeholder]="registerbyemail ? 'Example@gmail.com' : 'XXX3598764' "
+                  <input matInput [placeholder]="registerbyemail ? 'Example@gmail.com' : 'XXX3598764' " 
                    formControlName="idFormControl" 
-                   [pattern]="registerbyemail ? rgxemail : rgxphone">
+                   [pattern]="registerbyemail ? rgxemail : rgxphone" [(ngModel)]="dataUser.id">
                 </mat-form-field>
                 <div fxLayout="column">
                   <button  mat-raised-button matStepperNext>Next</button>
@@ -43,12 +43,12 @@
                 <ng-template matStepLabel>Bước 2</ng-template>
                 <mat-form-field fxLayout="column">
                   <mat-label>Tên người dùng</mat-label>
-                  <input matInput formControlName="userName" placeholder="Tên người dùng">
+                  <input matInput formControlName="userName" placeholder="Tên người dùng" [(ngModel)]="dataUser.username">
                 </mat-form-field>
 
                 <mat-form-field  fxLayout="column">
                     <mat-label>Mật khẩu</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="passWord">
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="passWord" [(ngModel)]="dataUser.password">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
@@ -56,20 +56,36 @@
 
                 <mat-form-field  fxLayout="column">
                     <mat-label>Nhập lại mật khẩu</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassWord">
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassWord" [(ngModel)]="confirmPassWord">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
 
                 <mat-form-field fxLayout="column">
+                  <mat-label>Giới tính</mat-label>
+                  <mat-select [(ngModel)]="dataUser.gender" formControlName="gender">
+                    <mat-option value="Nam">Nam</mat-option>
+                    <mat-option value="Nu">Nữ</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field fxLayout="column">
+                  <mat-label>Ngày sinh</mat-label>
+                  <input matInput [matDatepicker]="picker" [(ngModel)]="dataUser.birthday"  formControlName="birthday" >
+                  <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+
+                <!-- <mat-form-field fxLayout="column">
                     <mat-label>Mã xác thực</mat-label>
                     <input matInput formControlName="verificationCode" placeholder="Mã xác thực">
-                </mat-form-field>
+                </mat-form-field> -->
                
                 <div fxLayout="row">
-                  <button fxFlex="50" mat-raised-button  matStepperPrevious>Back</button>
-                  <button fxFlex="50" mat-raised-button  matStepperNext>Next</button>
+                  <button fxFlex="50" mat-raised-button  matStepperPrevious>Trở lại</button>
+                  <button fxFlex="50" mat-raised-button  matStepperNext (click)="register()">Tiếp theo</button>
                 </div>
               </form>
             </mat-step>

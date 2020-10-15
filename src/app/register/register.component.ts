@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatStepper} from '@angular/material/stepper';
+import { GetUserService } from '../service/get-user.service';
+import { SearchDate } from '../shared/helper/SearchDate.Helper';
+import { UserModel } from '../shared/model/user.model';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 
@@ -13,7 +16,9 @@ import {MatStepper} from '@angular/material/stepper';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,
+              private userService : GetUserService
+              ) {}
   idFormGroup: FormGroup;
   regiterFormGroup: FormGroup;
   isLinear=true;
@@ -25,6 +30,9 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('stepper') stepper: MatStepper;
 
+  dataUser : UserModel = new UserModel();
+  confirmPassWord: string = "";
+
   ngOnInit() {
     this.idFormGroup = this._formBuilder.group({
       idFormControl:['', Validators.required]
@@ -33,12 +41,23 @@ export class RegisterComponent implements OnInit {
       userName: ['', Validators.required],
       passWord: ['', Validators.required],
       confirmPassWord: ['', Validators.required],
-      verificationCode: ['', Validators.required],
+      birthday: ['', Validators.required],
+      gender: ['', Validators.required],
+      // verificationCode: ['', Validators.required],
     });
   }
  
   onValChange(value:any){   
     this.registerbyemail = !this.registerbyemail;
     this.stepper.reset();
+  }
+
+  async register(){
+    if(this.confirmPassWord != this.dataUser.password){
+      alert("Mật khẩu không trùng khớp, vui lòng nhập lại!");
+      return;
+    }
+    this.dataUser.birthday = SearchDate.formatDateNoTime(this.dataUser.birthday);
+    let res = await this.userService.register(this.dataUser);
   }
 }

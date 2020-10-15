@@ -2,24 +2,24 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
+import { StorageService } from '../service/storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn = false;
-
+  constructor(
+    private storageService : StorageService
+  ) {
+  }
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(1000),
-      tap(val => this.isLoggedIn = true)
-    );
-  }
-
-  logout(): void {
-    this.isLoggedIn = false;
+  public isLoggedIn(): boolean {
+    var isLogged = this.storageService.get("isLogin");
+    if (isLogged === 'true') {
+      return true;
+    }
+    return false;
   }
 }

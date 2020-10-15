@@ -32,6 +32,7 @@ export class LogInComponent implements OnInit {
   async login(){
     let res = await this.loginService.login(this.loginModel);
     if(res.Item){
+      alert("Đăng nhập thành công");
       this.router.navigate(['./dashboard']);
     }
     else{

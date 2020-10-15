@@ -18,6 +18,7 @@ export class LoginService {
     if(res.Item){
       this.storageService.set('userName', res.Item.user_name);
       this.storageService.set('userId', res.Item.userid);
+      this.storageService.set('isLogin', "true");   
     }
     return res;
   }

@@ -35,6 +35,7 @@ export class DialogUpdateComponent implements OnInit {
     this.dataUpdate.password = this.data.dataUser.password;
     let res = await this.userService.updateInfo(this.dataUpdate);
     if(res){
+      alert("Cập nhật thông tin thành công");
       this.dialogRef.close();
     }
   }

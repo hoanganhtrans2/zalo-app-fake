@@ -2,6 +2,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogUpdateComponent } from '../home-page/dialog-update/dialog-update.component';
+import { StorageService } from '../service/storage.service';
+import { GetUserService } from '../service/get-user.service';
 
 
 @Component({
@@ -10,8 +12,16 @@ import {DialogUpdateComponent } from '../home-page/dialog-update/dialog-update.c
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(private router: Router,  private route: ActivatedRoute, public dialog: MatDialog) {}
-
+  constructor(private router: Router,
+      private route: ActivatedRoute,
+      public dialog: MatDialog,
+      private storageService : StorageService,
+      private userService : GetUserService
+      ) 
+       {}
+  userName = this.storageService.get('userName');
+  userId = this.storageService.get('userId');
+  dataUser: any;
   ngOnInit(): void {}
 
   goToChat(event : any){
@@ -21,10 +31,19 @@ export class HomePageComponent implements OnInit {
   goToContact(){
     this.router.navigate(['./contact'], { relativeTo: this.route });
   }
-  openDialog(): void {
+
+  async getCurrentUserInfo(){
+    let res = await this.userService.getUserInfo(this.userId);
+    if(res){
+      this.dataUser = res.Item;
+    }
+  }
+
+  async openDialog() {
+    await this.getCurrentUserInfo();
     const dialogRef = this.dialog.open(DialogUpdateComponent, {
-      width: '250px',
-      data: {}
+      width: '450px',
+      data: { dataUser : this.dataUser}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -34,6 +53,7 @@ export class HomePageComponent implements OnInit {
   }
   
   logOut(){
+    this.storageService.removeAll();
     this.router.navigate(['./login']);
   }
 

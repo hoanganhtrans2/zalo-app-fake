@@ -29,6 +29,8 @@ import { ListItemChatComponent } from './home-page/list-item-chat/list-item-chat
 import { ListItemContactComponent } from './home-page/list-item-contact/list-item-contact.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DialogUpdateComponent } from './home-page/dialog-update/dialog-update.component';
+import { SharedModule } from './shared/model/shared.module';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 
@@ -66,9 +68,12 @@ import { DialogUpdateComponent } from './home-page/dialog-update/dialog-update.c
     MatButtonToggleModule,
     MatDividerModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    SharedModule,
+    MatNativeDateModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

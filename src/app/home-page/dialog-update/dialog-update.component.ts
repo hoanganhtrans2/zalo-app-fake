@@ -1,7 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { StorageService } from 'src/app/service/storage.service';
+import { SearchDate } from 'src/app/shared/helper/SearchDate.Helper';
+import { UserModel } from 'src/app/shared/model/user.model';
 import { GetUserService } from '../../service/get-user.service'
 
 @Component({
@@ -13,19 +17,25 @@ export class DialogUpdateComponent implements OnInit {
 
   constructor(
      private userService: GetUserService,
-     private _formBuilder: FormBuilder
+     private _formBuilder: FormBuilder,
+     private dialogRef: MatDialogRef<DialogUpdateComponent>,
+     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
     updateInfoFormGroup: FormGroup;
-  username='HoangAnh';
-  gioitinh='nam'
-  //tesst = new Date(this.tesst);
-  ngOnInit(): void {
-
-
-
-   // this.tesst='hoanganh';
-    this.userService.getHeroes().subscribe(date => console.log(date));
-    
+    dataUpdate : UserModel = new UserModel();
+  async ngOnInit() {
+    this.data.dataUser.birthday = new Date(this.data.dataUser.birthday);
   }
 
+  async updateInfo(){
+    this.dataUpdate.id = this.data.dataUser.userid;
+    this.dataUpdate.username = this.data.dataUser.user_name;
+    this.dataUpdate.birthday = SearchDate.formatDateNoTime(this.data.dataUser.birthday);
+    this.dataUpdate.gender = this.data.dataUser.gender;
+    this.dataUpdate.password = this.data.dataUser.password;
+    let res = await this.userService.updateInfo(this.dataUpdate);
+    if(res){
+      this.dialogRef.close();
+    }
+  }
 }

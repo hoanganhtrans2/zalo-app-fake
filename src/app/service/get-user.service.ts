@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { UserModel } from '../shared/model/user.model';
 
 export interface User {
   userid: string;
@@ -15,11 +16,11 @@ export class GetUserService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(userid:string){
-    return this.http.get('http://localhost:3000/api/user/0973048541')
+  async getUserInfo(userid:string): Promise<any> {
+    return await this.http.get(`http://localhost:3000/api/user/${userid}`).toPromise();
   }
-  getHeroes(){
-    return this.http.get('http://localhost:3000/api/user/0973048541', {responseType:'json'})
+ 
+  async updateInfo(model : UserModel): Promise<any>{
+    return await this.http.post<any>('http://localhost:3000/api/updateinfo',model).toPromise();
   }
-  
 }

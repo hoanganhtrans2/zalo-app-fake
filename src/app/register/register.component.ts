@@ -5,6 +5,8 @@ import { GetUserService } from '../service/get-user.service';
 import { SearchDate } from '../shared/helper/SearchDate.Helper';
 import { UserModel } from '../shared/model/user.model';
 
+
+
 /** Error when invalid control is dirty, touched, or submitted. */
 
 
@@ -17,7 +19,7 @@ import { UserModel } from '../shared/model/user.model';
 export class RegisterComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
-              private userService : GetUserService
+              private userService : GetUserService,
               ) {}
   idFormGroup: FormGroup;
   regiterFormGroup: FormGroup;
@@ -58,6 +60,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.dataUser.birthday = SearchDate.formatDateNoTime(this.dataUser.birthday);
-    let res = await this.userService.register(this.dataUser);
+    let res = await this.userService.register(this.dataUser);  
+    console.log(res);
   }
 }

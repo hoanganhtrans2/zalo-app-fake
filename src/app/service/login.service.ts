@@ -19,6 +19,7 @@ export class LoginService {
       this.storageService.set('userName', res.Item.user_name);
       this.storageService.set('userId', res.Item.userid);
     }
+    
     return res;
   }
 }

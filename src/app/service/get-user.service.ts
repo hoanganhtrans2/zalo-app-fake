@@ -23,4 +23,8 @@ export class GetUserService {
   async updateInfo(model : UserModel): Promise<any>{
     return await this.http.post<any>('http://localhost:3000/api/updateinfo',model).toPromise();
   }
+
+  async register(model : UserModel): Promise<any>{
+    return await this.http.post<any>('http://localhost:3000/api/register',model).toPromise();
+  }
 }

@@ -31,9 +31,11 @@ export class LogInComponent implements OnInit {
 
   async login(){
     let res = await this.loginService.login(this.loginModel);
-    if(res){
-      console.log(res);
+    if(res.Item){
       this.router.navigate(['./dashboard']);
+    }
+    else{
+      alert(res.err);
     }
   }
 }

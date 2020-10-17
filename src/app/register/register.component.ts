@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { LoginModel } from './../shared/model/login.model';
+import { LoginService } from './../service/login.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatStepper} from '@angular/material/stepper';
@@ -17,7 +20,9 @@ import { UserModel } from '../shared/model/user.model';
 export class RegisterComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
-              private userService : GetUserService
+              private userService : GetUserService,
+              private loginService : LoginService,
+              private router : Router
               ) {}
   idFormGroup: FormGroup;
   regiterFormGroup: FormGroup;
@@ -32,6 +37,7 @@ export class RegisterComponent implements OnInit {
 
   dataUser : UserModel = new UserModel();
   confirmPassWord: string = "";
+  loginModel : LoginModel = new LoginModel();
 
   ngOnInit() {
     this.idFormGroup = this._formBuilder.group({
@@ -59,5 +65,12 @@ export class RegisterComponent implements OnInit {
     }
     this.dataUser.birthday = SearchDate.formatDateNoTime(this.dataUser.birthday);
     let res = await this.userService.register(this.dataUser);
+    if(res.Item){
+      alert("Bạn đã đăng ký thành công, nhấn ok để đến trang chủ");
+      this.loginModel.id = res.Item.id;
+      this.loginModel.password = res.Item.password;
+      await this.loginService.login(this.loginModel);
+      this.router.navigate(['./dashboard']);
+    }
   }
 }

@@ -16,7 +16,7 @@ export class LoginService {
   async login(model : LoginModel): Promise<any>{
     const res = await this.http.post<any>('http://localhost:3000/api/login',model).toPromise();
     if(res.Item){
-      this.storageService.set('userName', res.Item.user_name);
+      this.storageService.set('userName', res.Item.username);
       this.storageService.set('userId', res.Item.userid);
       this.storageService.set('isLogin', "true");   
     }

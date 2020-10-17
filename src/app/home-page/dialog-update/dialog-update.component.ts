@@ -29,7 +29,7 @@ export class DialogUpdateComponent implements OnInit {
 
   async updateInfo(){
     this.dataUpdate.id = this.data.dataUser.userid;
-    this.dataUpdate.username = this.data.dataUser.user_name;
+    this.dataUpdate.username = this.data.dataUser.username;
     this.dataUpdate.birthday = SearchDate.formatDateNoTime(this.data.dataUser.birthday);
     this.dataUpdate.gender = this.data.dataUser.gender;
     this.dataUpdate.password = this.data.dataUser.password;

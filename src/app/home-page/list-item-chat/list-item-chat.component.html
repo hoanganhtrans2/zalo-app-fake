@@ -9,11 +9,11 @@
 
   <!--  -->
  <div>
-  <mat-selection-list #shoes [multiple]="false">
+  <mat-selection-list  [multiple]="false">
     <mat-list-option  fxLayout="column"  *ngFor="let item of listUserChat" [value]="item">
       <app-item-chat
       name="{{ item.name }}"
-      message="{{ item.message }}"
+      message="{{ item.lastMessage }}"
       avatarUrl="{{ item.imgUrl }}"
     ></app-item-chat>
     <mat-divider></mat-divider>

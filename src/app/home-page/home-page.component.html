@@ -7,9 +7,9 @@
       name="fontStyle"
       aria-label="Font Style">
       <mat-card class="avatar" [matMenuTriggerFor]="menu">
-        <div mat-card-avatar class="image-info"></div>
+        <img [src]="avatarUrl" alt="avt" mat-card-avatar>
       </mat-card>
-<!-- menu -->
+      <!-- menu -->
       <mat-menu #menu="matMenu" xPosition="after">
         <button mat-menu-item (click)="openDialog()">
           <mat-icon>create</mat-icon>
@@ -21,7 +21,7 @@
         </button>
       </mat-menu>
     
-      <mat-button-toggle value="chat" (click)="goToChat($event)">
+      <mat-button-toggle value="chat" (click)="goToChat()">
         <mat-icon >message</mat-icon>
       </mat-button-toggle>
       <mat-button-toggle value="list-contacts" (click)="goToContact()">
@@ -35,7 +35,7 @@
   </div>
 
   <div fxFlex="25 1 25" class="list-chat">
-    <div style="border-bottom: 1px solid #323233">
+    <div style="border-bottom: 1px solid #e8eaed">
       <h3><span>Zalo - </span> <span>{{ userName }}</span></h3>
       <mat-divider></mat-divider>
       <div fxLayout="row" fxLayoutAlign="end center">
@@ -52,5 +52,7 @@
     </div>
   </div>
 
-  <div fxFlex="70 3 70" class="content-chat">3</div>
+  <div fxFlex="70 3 70" class="content-chat">
+    <app-content-chat></app-content-chat>
+  </div>
 </div>

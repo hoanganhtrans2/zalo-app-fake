@@ -31,6 +31,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { DialogUpdateComponent } from './home-page/dialog-update/dialog-update.component';
 import { SharedModule } from './shared/model/shared.module';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { ContentChatComponent } from './home-page/list-item-chat/content-chat/content-chat.component';
 
 
 
@@ -39,13 +40,14 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
   declarations: [
     AppComponent,
     LogInComponent,
-
     RegisterComponent,
     HomePageComponent,
     ItemChatComponent,
     ListItemChatComponent,
     ListItemContactComponent,
-    DialogUpdateComponent
+    DialogUpdateComponent,
+    ContentChatComponent,
+    
   ],
   imports: [
     MatDatepickerModule,

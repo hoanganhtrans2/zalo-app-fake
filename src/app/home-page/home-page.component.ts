@@ -17,14 +17,14 @@ export class HomePageComponent implements OnInit {
       public dialog: MatDialog,
       private storageService : StorageService,
       private userService : GetUserService
-      ) 
-       {}
+      ) {}
   userName = this.storageService.get('userName');
   userId = this.storageService.get('userId');
   dataUser: any;
+  avatarUrl='../../assets/shiba1.jpg'
   ngOnInit(): void {}
 
-  goToChat(event : any){
+  goToChat(){
     console.log(event)
     this.router.navigate(['./chat'], { relativeTo: this.route });
   }

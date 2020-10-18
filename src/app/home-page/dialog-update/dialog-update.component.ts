@@ -1,12 +1,13 @@
+import { StorageService } from './../../service/storage.service';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { StorageService } from 'src/app/service/storage.service';
 import { SearchDate } from 'src/app/shared/helper/SearchDate.Helper';
 import { UserModel } from 'src/app/shared/model/user.model';
 import { GetUserService } from '../../service/get-user.service'
+
 
 @Component({
   selector: 'app-dialog-update',
@@ -16,6 +17,7 @@ import { GetUserService } from '../../service/get-user.service'
 export class DialogUpdateComponent implements OnInit {
 
   constructor(
+    private storageService: StorageService,
      private userService: GetUserService,
      private _formBuilder: FormBuilder,
      private dialogRef: MatDialogRef<DialogUpdateComponent>,
@@ -36,6 +38,7 @@ export class DialogUpdateComponent implements OnInit {
     let res = await this.userService.updateInfo(this.dataUpdate);
     if(res){
       alert("Cập nhật thông tin thành công");
+      this.storageService.set('userName', this.data.dataUser.username);
       this.dialogRef.close();
     }
   }

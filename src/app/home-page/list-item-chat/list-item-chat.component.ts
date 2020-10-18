@@ -15,17 +15,17 @@ export class ListItemChatComponent implements OnInit {
   listUserChat = [
     {
       name:'user 1',
-      message:'hello word',
+      lastMessage:'hello word',
       imgUrl:'../../../assets/shiba1.jpg'
     },
     {
       name:'user 2',
-      message:'hello word word word',
+      lastMessage:'hello word word word',
       imgUrl:'../../../assets/shiba1.jpg'
     },
     {
       name:'user 3',
-      message:'hello word',
+      lastMessage:'hello word',
       imgUrl:'../../../assets/shiba1.jpg'
     }
   ]

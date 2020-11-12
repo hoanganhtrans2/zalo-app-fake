@@ -1,6 +1,8 @@
+import { DialogAddFriendComponent } from './../dialog-add-friend/dialog-add-friend.component';
 import { ContactService } from './../service/contact.service';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../service/storage.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-item-invitations',
@@ -10,7 +12,8 @@ import { StorageService } from '../service/storage.service';
 export class ListItemInvitationsComponent implements OnInit {
   constructor(
     private contactServiec: ContactService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    public dialog: MatDialog
   ) {}
   listinvitions = [];
   id = '';
@@ -25,10 +28,14 @@ export class ListItemInvitationsComponent implements OnInit {
     this.listinvitions = result.Items;
   }
 
-  onWriteonSelectChangerChange(event): void {
+  onSelectChange(event): void {
     console.log(event.option.value);
     console.log(event.option);
     this.id = event.option.value.userid;
+    const dialogRef = this.dialog.open(DialogAddFriendComponent, {
+      width: '450px',
+      data: { dataUser: event.option.value },
+    });
   }
   donguy() {
     alert('dong y ' + this.id);

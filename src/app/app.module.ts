@@ -32,6 +32,7 @@ import { SharedModule } from './shared/model/shared.module';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ContentChatComponent } from './content-chat/content-chat.component';
 import { ListItemInvitationsComponent } from './list-item-invitations/list-item-invitations.component';
+import { DialogAddFriendComponent } from './dialog-add-friend/dialog-add-friend.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ListItemInvitationsComponent } from './list-item-invitations/list-item-
     ContentChatComponent,
     ListItemChatComponent,
     ListItemInvitationsComponent,
+    DialogAddFriendComponent,
   ],
   imports: [
     MatDatepickerModule,

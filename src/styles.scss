@@ -1,21 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-mat-ink-bar,  .mat-step-icon-state-edit {
-    background-color: #133a62 !important;
+html,
+body {
+  height: 100%;
 }
-.mat-step-icon-selected{
-    background-color: #133a62 !important;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.mat-button-toggle-checked{
-    background-color: #0782CC;
+mat-ink-bar,
+.mat-step-icon-state-edit {
+  background-color: #133a62 !important;
 }
-.mat-select-value{
-    color: white;
+.mat-step-icon-selected {
+  background-color: #133a62 !important;
 }
- .mat-list-item-content, .mat-list-item-content-reverse{
-    padding: 0 !important;
-    height: 50px;
-  }
-  
+.mat-button-toggle-checked {
+  background-color: #0782cc;
+}
+.mat-select-value {
+  color: white;
+}
+.mat-list-item-content,
+.mat-list-item-content-reverse {
+  padding: 0 !important;
+  height: 50px;
+}

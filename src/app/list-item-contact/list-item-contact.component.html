@@ -1,0 +1,19 @@
+<div>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option
+      fxLayout="column"
+      *ngFor="let item of listUserChat"
+      [value]="item"
+    >
+      <mat-card class="item-chat">
+        <mat-card-header>
+          <img [src]="item.imgurl" alt="avt" mat-card-avatar />
+          <div class="img-user"></div>
+          <mat-card-title>{{ item.username }}</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+    </mat-list-option>
+  </mat-selection-list>
+</div>

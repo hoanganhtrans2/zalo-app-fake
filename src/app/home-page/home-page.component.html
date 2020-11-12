@@ -5,9 +5,10 @@
       fxFill
       appearance="legacy"
       name="fontStyle"
-      aria-label="Font Style">
+      aria-label="Font Style"
+    >
       <mat-card class="avatar" [matMenuTriggerFor]="menu">
-        <img [src]="avatarUrl" alt="avt" mat-card-avatar>
+        <img [src]="avatarUrl" alt="avt" mat-card-avatar />
       </mat-card>
       <!-- menu -->
       <mat-menu #menu="matMenu" xPosition="after">
@@ -15,17 +16,20 @@
           <mat-icon>create</mat-icon>
           <span>Cập nhật thông tin</span>
         </button>
-        <button mat-menu-item  (click) ="logOut()">
+        <button mat-menu-item (click)="logOut()">
           <mat-icon>exit_to_app</mat-icon>
           <span>Đăng xuất tài khoản</span>
         </button>
       </mat-menu>
-    
+
       <mat-button-toggle value="chat" (click)="goToChat()">
-        <mat-icon >message</mat-icon>
+        <mat-icon>message</mat-icon>
       </mat-button-toggle>
       <mat-button-toggle value="list-contacts" (click)="goToContact()">
-        <mat-icon >contacts</mat-icon>
+        <mat-icon>contacts</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="list-contacts" (click)="goToAddFriend()">
+        <mat-icon>person_add</mat-icon>
       </mat-button-toggle>
       <span class="spacer"></span>
       <mat-button-toggle value="settings">
@@ -36,18 +40,20 @@
 
   <div fxFlex="25 1 25" class="list-chat">
     <div style="border-bottom: 1px solid #e8eaed">
-      <h3><span>Zalo - </span> <span>{{ userName }}</span></h3>
+      <h3>
+        <span>Zalo - </span> <span>{{ userName }}</span>
+      </h3>
       <mat-divider></mat-divider>
       <div fxLayout="row" fxLayoutAlign="end center">
         <button mat-icon-button>
-          <mat-icon>person_add</mat-icon>
+          <mat-icon>person_search</mat-icon>
         </button>
         <button mat-icon-button>
           <mat-icon>add_comment</mat-icon>
         </button>
       </div>
     </div>
-    <div> 
+    <div>
       <router-outlet></router-outlet>
     </div>
   </div>

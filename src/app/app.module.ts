@@ -14,27 +14,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatSelectModule} from '@angular/material/select';
-import {MatListModule} from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { ItemChatComponent } from './home-page/list-item-chat/item-chat/item-chat.component';
-import { ListItemChatComponent } from './home-page/list-item-chat/list-item-chat.component';
-import { ListItemContactComponent } from './home-page/list-item-contact/list-item-contact.component';
+import { ListItemChatComponent } from './list-item-chat/list-item-chat.component';
+import { ListItemContactComponent } from './list-item-contact/list-item-contact.component';
 import { AuthGuard } from './auth/auth.guard';
-import { DialogUpdateComponent } from './home-page/dialog-update/dialog-update.component';
+import { DialogUpdateComponent } from './dialog-update/dialog-update.component';
 import { SharedModule } from './shared/model/shared.module';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { ContentChatComponent } from './home-page/list-item-chat/content-chat/content-chat.component';
-
-
-
+import { ContentChatComponent } from './content-chat/content-chat.component';
+import { ListItemInvitationsComponent } from './list-item-invitations/list-item-invitations.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +39,11 @@ import { ContentChatComponent } from './home-page/list-item-chat/content-chat/co
     LogInComponent,
     RegisterComponent,
     HomePageComponent,
-    ItemChatComponent,
-    ListItemChatComponent,
     ListItemContactComponent,
     DialogUpdateComponent,
     ContentChatComponent,
-    
+    ListItemChatComponent,
+    ListItemInvitationsComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -72,10 +68,9 @@ import { ContentChatComponent } from './home-page/list-item-chat/content-chat/co
     MatSelectModule,
     MatListModule,
     SharedModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
-  providers: [AuthGuard,
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},],
+  providers: [AuthGuard, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

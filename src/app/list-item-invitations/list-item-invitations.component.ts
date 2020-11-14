@@ -3,6 +3,7 @@ import { ContactService } from './../service/contact.service';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../service/storage.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-item-invitations',
@@ -13,15 +14,17 @@ export class ListItemInvitationsComponent implements OnInit {
   constructor(
     private contactServiec: ContactService,
     private storageService: StorageService,
+    private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {}
   listinvitions = [];
+  selectedOptions: any;
   id = '';
   ngOnInit(): void {
-    this.getListFriends();
+    this.getListFriendInvitations();
   }
 
-  async getListFriends(): Promise<any> {
+  async getListFriendInvitations(): Promise<any> {
     const id = this.storageService.get('userId');
     const result = await this.contactServiec.getListInvitations({ id: id });
     console.log(result);
@@ -29,15 +32,30 @@ export class ListItemInvitationsComponent implements OnInit {
   }
 
   onSelectChange(event): void {
-    console.log(event.option.value);
-    console.log(event.option);
-    this.id = event.option.value.userid;
+    // console.log(event.option.value);
+    // console.log(event.option);
+    // this.id = event.option.value.userid;
+    // const dialogRef = this.dialog.open(DialogAddFriendComponent, {
+    //   width: '450px',
+    //   data: { dataUser: event.option.value },
+    // });
+  }
+  showinfo() {
     const dialogRef = this.dialog.open(DialogAddFriendComponent, {
       width: '450px',
-      data: { dataUser: event.option.value },
+      data: { dataUser: this.selectedOptions[0] },
     });
-  }
-  donguy() {
-    alert('dong y ' + this.id);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log(result);
+        this.snackBar.open(result, '', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['center'],
+        });
+        this.getListFriendInvitations();
+      }
+    });
   }
 }

@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
@@ -48,6 +49,7 @@ import { DialogAddFriendComponent } from './dialog-add-friend/dialog-add-friend.
     DialogAddFriendComponent,
   ],
   imports: [
+    MatSnackBarModule,
     MatDatepickerModule,
     HttpClientModule,
     MatDialogModule,

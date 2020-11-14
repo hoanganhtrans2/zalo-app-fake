@@ -1,13 +1,14 @@
 <div>
   <mat-selection-list
     [multiple]="false"
-    selectedOptions="model"
+    [(ngModel)]="selectedOptions"
     (selectionChange)="onSelectChange($event)"
   >
     <mat-list-option
       fxLayout="column"
       *ngFor="let item of listinvitions"
       [value]="item"
+      (click)="showinfo()"
     >
       <mat-card class="item-chat">
         <mat-card-header>

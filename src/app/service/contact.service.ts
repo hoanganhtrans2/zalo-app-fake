@@ -25,4 +25,16 @@ export class ContactService {
       .post('http://localhost:3000/api/friend/getListFriendsInvitations', model)
       .toPromise();
   }
+
+  async acceptFriend(model: any): Promise<any> {
+    return await this.http
+      .post('http://localhost:3000/api/friend/acceptFriendRequest', model)
+      .toPromise();
+  }
+
+  async denyFriend(model: any): Promise<any> {
+    return await this.http
+      .post('http://localhost:3000/api/friend/denyfriendrequest', model)
+      .toPromise();
+  }
 }

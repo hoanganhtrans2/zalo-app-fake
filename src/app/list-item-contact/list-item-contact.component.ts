@@ -12,7 +12,7 @@ export class ListItemContactComponent implements OnInit {
     private contactServiec: ContactService,
     private storageService: StorageService
   ) {}
-
+  selectedOptions: any;
   listUserChat = [];
   ngOnInit(): void {
     this.getListFriends();
@@ -23,5 +23,8 @@ export class ListItemContactComponent implements OnInit {
     const result = await this.contactServiec.getListFriends({ id: id });
     console.log(result);
     this.listUserChat = result.Items;
+  }
+  deletefriend() {
+    console.log(this.selectedOptions[0]);
   }
 }

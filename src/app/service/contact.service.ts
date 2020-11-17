@@ -37,4 +37,20 @@ export class ContactService {
       .post('http://localhost:3000/api/friend/denyfriendrequest', model)
       .toPromise();
   }
+
+  async findFriend(model: any): Promise<any> {
+    return await this.http
+      .post('http://localhost:3000/api/friend/finduser', model)
+      .toPromise();
+  }
+  async deleteFriend(model: any): Promise<any> {
+    return await this.http
+      .post('http://localhost:3000/api/friend/deletefriend', model)
+      .toPromise();
+  }
+  async sendFriendInvitions(model: any): Promise<any> {
+    return await this.http
+      .post('http://localhost:3000/api/friend/sendfriendinvitions', model)
+      .toPromise();
+  }
 }

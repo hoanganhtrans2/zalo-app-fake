@@ -34,6 +34,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ContentChatComponent } from './content-chat/content-chat.component';
 import { ListItemInvitationsComponent } from './list-item-invitations/list-item-invitations.component';
 import { DialogAddFriendComponent } from './dialog-add-friend/dialog-add-friend.component';
+import { DialogFindfriendComponent } from './dialog-findfriend/dialog-findfriend.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { DialogAddFriendComponent } from './dialog-add-friend/dialog-add-friend.
     ListItemChatComponent,
     ListItemInvitationsComponent,
     DialogAddFriendComponent,
+    DialogFindfriendComponent,
   ],
   imports: [
     MatSnackBarModule,

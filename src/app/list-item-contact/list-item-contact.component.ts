@@ -1,6 +1,7 @@
 import { ContactService } from './../service/contact.service';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../service/storage.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-item-contact',
@@ -10,6 +11,7 @@ import { StorageService } from '../service/storage.service';
 export class ListItemContactComponent implements OnInit {
   constructor(
     private contactServiec: ContactService,
+    private snackBar: MatSnackBar,
     private storageService: StorageService
   ) {}
   selectedOptions: any;
@@ -24,7 +26,20 @@ export class ListItemContactComponent implements OnInit {
     console.log(result);
     this.listUserChat = result.Items;
   }
-  deletefriend() {
-    console.log(this.selectedOptions[0]);
+  async deletefriend() {
+    let model = {
+      id: this.storageService.get('userId'),
+      idIsDeleted: this.selectedOptions[0].userid,
+    };
+    let res = await this.contactServiec.deleteFriend(model);
+    if (res.message) {
+      let result = await this.getListFriends();
+      this.snackBar.open(res.message, '', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        panelClass: ['center'],
+      });
+    }
   }
 }

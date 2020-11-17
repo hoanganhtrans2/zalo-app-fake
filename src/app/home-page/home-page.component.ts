@@ -1,3 +1,4 @@
+import { DialogFindfriendComponent } from './../dialog-findfriend/dialog-findfriend.component';
 import { from } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -53,6 +54,11 @@ export class HomePageComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       // this.animal = result;
+    });
+  }
+  openFindFriendDialog() {
+    const dialogFindFriend = this.dialog.open(DialogFindfriendComponent, {
+      width: '350px',
     });
   }
 

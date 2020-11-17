@@ -17,7 +17,6 @@ export class DialogUpdateComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private userService: GetUserService,
-    private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<DialogUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}

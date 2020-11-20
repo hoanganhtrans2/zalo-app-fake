@@ -1,6 +1,11 @@
 import { ListItemInvitationsComponent } from './list-item-invitations/list-item-invitations.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {
+  Routes,
+  RouterModule,
+  PreloadingStrategy,
+  PreloadAllModules,
+} from '@angular/router';
 import { from } from 'rxjs';
 import { LogInComponent } from '../app/log-in/log-in.component';
 import { RegisterComponent } from '../app/register/register.component';
@@ -21,6 +26,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: HomePageComponent,
     canActivateChild: [AuthGuard],
+
     children: [
       { path: '', redirectTo: 'chat', pathMatch: 'full' },
       { path: 'chat', component: ListItemChatComponent },
@@ -31,7 +37,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

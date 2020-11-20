@@ -27,12 +27,13 @@ import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ListItemChatComponent } from './list-item-chat/list-item-chat.component';
 import { ListItemContactComponent } from './list-item-contact/list-item-contact.component';
+import { ListItemInvitationsComponent } from './list-item-invitations/list-item-invitations.component';
+
 import { AuthGuard } from './auth/auth.guard';
 import { DialogUpdateComponent } from './dialog-update/dialog-update.component';
 import { SharedModule } from './shared/model/shared.module';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ContentChatComponent } from './content-chat/content-chat.component';
-import { ListItemInvitationsComponent } from './list-item-invitations/list-item-invitations.component';
 import { DialogAddFriendComponent } from './dialog-add-friend/dialog-add-friend.component';
 import { DialogFindfriendComponent } from './dialog-findfriend/dialog-findfriend.component';
 
@@ -42,11 +43,12 @@ import { DialogFindfriendComponent } from './dialog-findfriend/dialog-findfriend
     LogInComponent,
     RegisterComponent,
     HomePageComponent,
-    ListItemContactComponent,
+
     DialogUpdateComponent,
     ContentChatComponent,
     ListItemChatComponent,
     ListItemInvitationsComponent,
+    ListItemContactComponent,
     DialogAddFriendComponent,
     DialogFindfriendComponent,
   ],
@@ -74,6 +76,7 @@ import { DialogFindfriendComponent } from './dialog-findfriend/dialog-findfriend
     MatSelectModule,
     MatListModule,
     SharedModule,
+
     MatNativeDateModule,
   ],
   providers: [AuthGuard, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],

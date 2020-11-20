@@ -24,7 +24,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
-    component: HomePageComponent,
+    loadChildren: () =>
+      import('./shared/lazy.module').then((m) => m.LazyModule),
+    /* component: HomePageComponent,
     canActivateChild: [AuthGuard],
 
     children: [
@@ -32,7 +34,7 @@ const routes: Routes = [
       { path: 'chat', component: ListItemChatComponent },
       { path: 'contact', component: ListItemContactComponent },
       { path: 'invitations', component: ListItemInvitationsComponent },
-    ],
+    ],*/
   },
 ];
 

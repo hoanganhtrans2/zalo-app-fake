@@ -1,3 +1,4 @@
+import { InvitationsService } from './../shared/data/invitations.service';
 import { DialogAddFriendComponent } from './../dialog-add-friend/dialog-add-friend.component';
 import { ContactService } from './../service/contact.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,20 +16,22 @@ export class ListItemInvitationsComponent implements OnInit {
     private contactServiec: ContactService,
     private storageService: StorageService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private invitationsService: InvitationsService
   ) {}
   listinvitions = [];
   selectedOptions: any;
   id = '';
   ngOnInit(): void {
+    this.listinvitions = this.invitationsService.getList();
     this.getListFriendInvitations();
   }
 
   async getListFriendInvitations(): Promise<any> {
     const id = this.storageService.get('userId');
     const result = await this.contactServiec.getListInvitations({ id: id });
-    console.log(result);
     this.listinvitions = result.Items;
+    this.invitationsService.setList(result.Items);
   }
 
   onSelectChange(event): void {

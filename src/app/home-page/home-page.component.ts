@@ -1,3 +1,5 @@
+import { InvitationsService } from './../shared/data/invitations.service';
+import { FriendsService } from './../shared/data/friends.service';
 import { DialogFindfriendComponent } from './../dialog-findfriend/dialog-findfriend.component';
 import { from } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -6,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogUpdateComponent } from '../dialog-update/dialog-update.component';
 import { StorageService } from '../service/storage.service';
 import { GetUserService } from '../service/get-user.service';
+import { ContactService } from './../service/contact.service';
 
 @Component({
   selector: 'app-home-page',
@@ -18,16 +21,28 @@ export class HomePageComponent implements OnInit {
     private route: ActivatedRoute,
     public dialog: MatDialog,
     private storageService: StorageService,
-    private userService: GetUserService
+    private userService: GetUserService,
+    private contactServiec: ContactService,
+    private friendsService: FriendsService,
+    private invitationsService: InvitationsService
   ) {}
   userName = this.storageService.get('userName');
   userId = this.storageService.get('userId');
   dataUser: any;
   avatarUrl = '../../assets/shiba1.jpg';
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<void> {
+    const resultF = await this.contactServiec.getListFriends({
+      id: this.userId,
+    });
+    const resultI = await this.contactServiec.getListInvitations({
+      id: this.userId,
+    });
+    this.friendsService.setList(resultF.Items);
+    this.invitationsService.setList(resultI.Items);
+    console.log('init');
+  }
 
   goToChat() {
-    console.log(event);
     this.router.navigate(['./chat'], { relativeTo: this.route });
   }
   goToContact() {

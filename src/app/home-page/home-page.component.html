@@ -26,10 +26,20 @@
         <mat-icon>message</mat-icon>
       </mat-button-toggle>
       <mat-button-toggle value="list-contacts" (click)="goToContact()">
-        <mat-icon>contacts</mat-icon>
+        <mat-icon
+          [matBadge]="notifyFriend"
+          matBadgeColor="warn"
+          [matBadgeHidden]="notifyFriend > 0 ? false : true"
+          >contacts</mat-icon
+        >
       </mat-button-toggle>
       <mat-button-toggle value="list-contacts" (click)="goToAddFriend()">
-        <mat-icon>person_add</mat-icon>
+        <mat-icon
+          [matBadge]="notifyInvitations"
+          matBadgeColor="warn"
+          [matBadgeHidden]="notifyInvitations > 0 ? false : true"
+          >person_add</mat-icon
+        >
       </mat-button-toggle>
       <span class="spacer"></span>
       <mat-button-toggle value="settings">

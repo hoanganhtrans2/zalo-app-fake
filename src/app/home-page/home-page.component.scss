@@ -3,14 +3,14 @@
 }
 .list-chat {
   background-color: whitesmoke;
- 
+
   h3 {
     font-weight: bold;
     padding: 15px 15px 0 15px;
     margin: 0;
   }
-  mat-divider{
-    background-color: #E8EAED;
+  mat-divider {
+    background-color: #e8eaed;
   }
   mat-icon-button {
     color: #323233;
@@ -42,32 +42,45 @@ mat-button-toggle {
   padding-bottom: 22px;
   cursor: pointer;
 }
-mat-select-value{
-    color: black;
+mat-select-value {
+  color: black;
 }
-select{    
-    
-    font-size: 15px;
-    margin: 5px 15px 5px 0px;
-    color: #72808E;
-    border: none;
-    outline: none;
-    background-color: transparent;
+select {
+  font-size: 15px;
+  margin: 5px 15px 5px 0px;
+  color: #72808e;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
-select:hover{
-    color: #0589ff;
+select:hover {
+  color: #0589ff;
 }
 
-.mat-list-single-selected-option, .mat-list-single-selected-option:hover, .mat-list-single-selected-option:focus {
-  background-color: #DCDCDC;}
+.mat-list-single-selected-option,
+.mat-list-single-selected-option:hover,
+.mat-list-single-selected-option:focus {
+  background-color: #dcdcdc;
+}
 
-  .mat-list-item-content{
-    padding: 0;
-  }
+.mat-list-item-content {
+  padding: 0;
+}
 
-  .mat-list-item-content, .mat-list-item-content-reverse{
+.mat-list-item-content,
+.mat-list-item-content-reverse {
+  padding: 0 !important;
+}
+mat-list-option {
+  height: 65px !important;
+}
+
+mat-button-toggle {
+  height: 60px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mat-icon {
     padding: 0 !important;
   }
-  mat-list-option{
-    height: 65px !important;
-  }
+}

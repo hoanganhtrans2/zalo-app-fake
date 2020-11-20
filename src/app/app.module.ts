@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
@@ -43,7 +44,6 @@ import { DialogFindfriendComponent } from './dialog-findfriend/dialog-findfriend
     LogInComponent,
     RegisterComponent,
     HomePageComponent,
-
     DialogUpdateComponent,
     ContentChatComponent,
     ListItemChatComponent,
@@ -54,6 +54,7 @@ import { DialogFindfriendComponent } from './dialog-findfriend/dialog-findfriend
   ],
   imports: [
     MatSnackBarModule,
+    MatBadgeModule,
     MatDatepickerModule,
     HttpClientModule,
     MatDialogModule,

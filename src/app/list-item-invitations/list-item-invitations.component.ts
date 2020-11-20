@@ -31,6 +31,7 @@ export class ListItemInvitationsComponent implements OnInit {
     const id = this.storageService.get('userId');
     const result = await this.contactServiec.getListInvitations({ id: id });
     this.listinvitions = result.Items;
+    this.invitationsService.changeNumber(result.Count);
     this.invitationsService.setList(result.Items);
   }
 

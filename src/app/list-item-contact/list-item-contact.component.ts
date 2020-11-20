@@ -27,6 +27,7 @@ export class ListItemContactComponent implements OnInit {
     const id = this.storageService.get('userId');
     const result = await this.contactServiec.getListFriends({ id: id });
     this.listUserChat = result.Items;
+    this.friendsService.setNotify(result.Count);
     this.friendsService.setList(result.Items);
     console.log(this.listUserChat);
   }

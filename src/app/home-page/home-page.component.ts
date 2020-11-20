@@ -30,6 +30,10 @@ export class HomePageComponent implements OnInit {
   userId = this.storageService.get('userId');
   dataUser: any;
   avatarUrl = '../../assets/shiba1.jpg';
+  notifyChat: number;
+  notifyFriend: number;
+  notifyInvitations: number;
+
   async ngOnInit(): Promise<void> {
     const resultF = await this.contactServiec.getListFriends({
       id: this.userId,
@@ -37,8 +41,19 @@ export class HomePageComponent implements OnInit {
     const resultI = await this.contactServiec.getListInvitations({
       id: this.userId,
     });
+
+    this.friendsService.setNotify(resultF.Count);
+    this.invitationsService.setNotify(resultI.Count);
+
+    this.notifyFriend = this.friendsService.getNotify();
+    this.notifyInvitations = this.invitationsService.getNotify();
+
     this.friendsService.setList(resultF.Items);
     this.invitationsService.setList(resultI.Items);
+
+    this.invitationsService.currentNumber.subscribe(
+      (value) => (this.notifyInvitations = value)
+    );
     console.log('init');
   }
 
